@@ -1,22 +1,37 @@
 <h1>Users</h1>
 
+<div data-controller="multistep-modal">
+  <sl-dialog data-multistep-modal-target="modal"
+             data-multistep-modal-current-step="1"
+             data-multistep-modal-total-steps="3"
+             title="Add User"
+             label="Step 1 of 1"
+             class="dialog-width"
+             style="--width: 50vw;">
+    Form content goes here...
+    <sl-button slot="footer" variant="primary" data-action="click->multistep-modal#close">Close</sl-button>
+  </sl-dialog>
+  <sl-button data-action="click->multistep-modal#open">Add User</sl-button>
+</div>
+
 <tbody>
-  <thead>
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Newsletter?</th>
+  <th>Notify by Email?
+  <th>
+</tr>
+</thead>
+<tbody>
+<% @users.each do |user| %>
   <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Newsletter?</th>
-      <th>Notify by Email?<th>
-    </tr>
-  </thead>
-  <tbody
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.first_name + " " + user.last_name %></td>
-      <td><%= user.email %></td>
-      <td><%= user.receive_newsletter ? "Yes" : "No" %></td>
-      <td><%= user.notify_by_email? ? "Yes" : "No" %></td>
-    </tr>
-  <% end %>
-  </tbody>
+    <td><%= user.first_name + " " + user.last_name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.receive_newsletter ? "Yes" : "No" %></td>
+    <td><%= user.notify_by_email? ? "Yes" : "No" %></td>
+  </tr>
+<% end %>
+</tbody>
 </table>
