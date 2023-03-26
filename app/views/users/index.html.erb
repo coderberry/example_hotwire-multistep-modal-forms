@@ -1,0 +1,22 @@
+<h1>Users</h1>
+
+<tbody>
+  <thead>
+  <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Newsletter?</th>
+      <th>Notify by Email?<th>
+    </tr>
+  </thead>
+  <tbody
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.first_name + " " + user.last_name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.receive_newsletter ? "Yes" : "No" %></td>
+      <td><%= user.notify_by_email? ? "Yes" : "No" %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
